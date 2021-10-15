@@ -20,6 +20,7 @@ public:
 	Pokemon(int, std::string, std::string, std::string*);
 	
 	void output(std::string);
+	std::string to_string();
 	
 	int getDexNum();
 	std::string getName();

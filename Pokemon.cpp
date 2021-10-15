@@ -48,12 +48,7 @@ Pokemon::Pokemon(int dex_num, std::string name, std::string type, std::string* m
  *********************************************************************/
 void Pokemon::output(std::string filename) {
 	// Creates an output to save or print
-	std::string output = "Pokédex Number: " + std::to_string(dex_num)
-	+ "\nName: " + name
-	+ "\nType: " + type
-	+ "\nMoves:\n";
-	for (int i = 0; i < 4; i++)
-		output += "\t" + moves[i] + "\n";
+	std::string output = to_string();
 	
 	// Checks if the filname string is empty or not
 	if (!(filename.length() > 0)) {
@@ -70,6 +65,23 @@ void Pokemon::output(std::string filename) {
 			std::cout << "\033[31m" << "Error: File not opened" << "\033[0m" << std::endl;
 		}
 	}
+}
+
+/*********************************************************************
+ ** Function: to_string()
+ ** Description: Function for building a string output for a Pokemon.
+ ** Parameters: N/A
+ ** Pre-Conditions: N/A
+ ** Post-Conditions: A string representation of a Pokemon will be output.
+ *********************************************************************/
+std::string Pokemon::to_string() {
+	std::string output = "Pokédex Number: " + std::to_string(dex_num)
+	+ "\nName: " + name
+	+ "\nType: " + type
+	+ "\nMoves:\n";
+	for (int i = 0; i < 4; i++)
+		output += "\t" + moves[i] + "\n";
+	return output;
 }
 
 /*********************************************************************

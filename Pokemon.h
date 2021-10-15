@@ -1,23 +1,23 @@
 /*********************************************************************
- ** Program Filename:   Pokemon.h
+ ** Program Filename:   pokemon.h
  ** Author:  Nils Streedain
  ** Date:  10/9/21
  ** Description:  Header file for Pokémon class
  *********************************************************************/
 
-#ifndef Pokemon_h
-#define Pokemon_h
+#ifndef pokemon_h
+#define pokemon_h
 
 #include <iostream>
 
-class Pokemon {
+class pokemon {
 	int dex_num;
 	std::string name;
 	std::string type;
 	std::string moves[4];
 public:
-	Pokemon();
-	Pokemon(int, std::string, std::string, std::string*);
+	pokemon();
+	pokemon(int, std::string, std::string, std::string*);
 	
 	void output(std::string);
 	std::string to_string();

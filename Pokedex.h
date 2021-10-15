@@ -1,21 +1,21 @@
 /*********************************************************************
- ** Program Filename:   Pokedex.h
+ ** Program Filename:   pokedex.h
  ** Author:  Nils Streedain
  ** Date:  10/9/21
  ** Description:  Header file for Pokédex class
  *********************************************************************/
 
-#ifndef Pokedex_h
-#define Pokedex_h
+#ifndef pokedex_h
+#define pokedex_h
 
 #include <iostream>
 #include <fstream>
-#include "Pokemon.h"
+#include "pokemon.h"
 
-class Pokedex {
+class pokedex {
 	int num_pokemon;
 	int maxSize;
-	Pokemon_h::Pokemon* dex;
+	pokemon_h::pokemon* dex;
 	std::string filename;
 	
 	void printError(std::string);
@@ -30,9 +30,9 @@ class Pokedex {
 	void resizeDex();
 	void clAddPokemon();
 public:
-	Pokedex();
-	Pokedex(int, std::string);
-	~Pokedex();
+	pokedex();
+	pokedex(int, std::string);
+	~pokedex();
 	
 	void addPokemon(int, std::string, std::string, std::string*);
 	void askWhatToDo();

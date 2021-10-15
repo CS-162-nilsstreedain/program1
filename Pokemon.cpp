@@ -1,5 +1,5 @@
 /*********************************************************************
- ** Program Filename:   Pokemon.cpp
+ ** Program Filename:   pokemon.cpp
  ** Author:  Nils Streedain
  ** Date:  10/9/21
  ** Description:  C++ file for Pokémon class. Creates a Pokédex object and provides various functions to use with said class.
@@ -7,16 +7,16 @@
 
 #include <string>
 #include <fstream>
-#include "Pokemon.h"
+#include "pokemon.h"
 
 /*********************************************************************
- ** Function: Pokemon()
- ** Description: Default constructor for the Pokemon object. Contains empty Pokemon information
+ ** Function: pokemon()
+ ** Description: Default constructor for the pokemon object. Contains empty pokemon information
  ** Parameters: N/A
  ** Pre-Conditions: N/A
  ** Post-Conditions: A new pokemon object will be created with empty contents.
  *********************************************************************/
-Pokemon::Pokemon() {
+pokemon::pokemon() {
 	dex_num = 0;
 	name = "";
 	type = "";
@@ -25,13 +25,13 @@ Pokemon::Pokemon() {
 }
 
 /*********************************************************************
- ** Function: Pokedex()
+ ** Function: pokedex()
  ** Description: Paramaterized constructor for making a pokemon object with specific attributes.
  ** Parameters: int dex_num, std::string name, std::string type, std::string* moves
- ** Pre-Conditions: Pokemon attributes must be provided as arguments
+ ** Pre-Conditions: pokemon attributes must be provided as arguments
  ** Post-Conditions: A pokemon object with specific attributes will be created.
  *********************************************************************/
-Pokemon::Pokemon(int dex_num, std::string name, std::string type, std::string* moves) {
+pokemon::pokemon(int dex_num, std::string name, std::string type, std::string* moves) {
 	this -> dex_num = dex_num;
 	this -> name = name;
 	this -> type = type;
@@ -46,7 +46,7 @@ Pokemon::Pokemon(int dex_num, std::string name, std::string type, std::string* m
  ** Pre-Conditions: A filename may be provided.
  ** Post-Conditions: If a filename was provided, the output is saved to the file, otherwise, it is printed to the console.
  *********************************************************************/
-void Pokemon::output(std::string filename) {
+void pokemon::output(std::string filename) {
 	// Creates an output to save or print
 	std::string output = to_string();
 	
@@ -69,12 +69,12 @@ void Pokemon::output(std::string filename) {
 
 /*********************************************************************
  ** Function: to_string()
- ** Description: Function for building a string output for a Pokemon.
+ ** Description: Function for building a string output for a pokemon.
  ** Parameters: N/A
  ** Pre-Conditions: N/A
- ** Post-Conditions: A string representation of a Pokemon will be output.
+ ** Post-Conditions: A string representation of a pokemon will be output.
  *********************************************************************/
-std::string Pokemon::to_string() {
+std::string pokemon::to_string() {
 	std::string output = "Pokédex Number: " + std::to_string(dex_num)
 	+ "\nName: " + name
 	+ "\nType: " + type
@@ -86,12 +86,12 @@ std::string Pokemon::to_string() {
 
 /*********************************************************************
  ** Function: getDexNum()
- ** Description: Function for getting the Pokedex number of a pokemon
+ ** Description: Function for getting the pokedex number of a pokemon
  ** Parameters: N/A
  ** Pre-Conditions: N/A
- ** Post-Conditions: Pokedex number of the pokemon will be returned.
+ ** Post-Conditions: pokedex number of the pokemon will be returned.
  *********************************************************************/
-int Pokemon::getDexNum() {
+int pokemon::getDexNum() {
 	return dex_num;
 }
 
@@ -102,7 +102,7 @@ int Pokemon::getDexNum() {
  ** Pre-Conditions: N/A
  ** Post-Conditions: Name of the pokemon will be returned.
  *********************************************************************/
-std::string Pokemon::getName() {
+std::string pokemon::getName() {
 	return name;
 }
 
@@ -113,6 +113,6 @@ std::string Pokemon::getName() {
  ** Pre-Conditions: N/A
  ** Post-Conditions: Type of the pokemon will be returned.
  *********************************************************************/
-std::string Pokemon::getType() {
+std::string pokemon::getType() {
 	return type;
 }

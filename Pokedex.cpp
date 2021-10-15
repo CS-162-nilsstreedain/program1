@@ -1,48 +1,48 @@
 /*********************************************************************
- ** Program Filename:   Pokedex.cpp
+ ** Program Filename:   pokedex.cpp
  ** Author:  Nils Streedain
  ** Date:  10/9/21
  ** Description:  C++ file for Pokédex class. Creates a Pokédex object and provides various functions to use with said class.
  *********************************************************************/
 
-#include "Pokedex.h"
+#include "pokedex.h"
 
 /*********************************************************************
- ** Function: Pokedex()
- ** Description: Default constructor for the Pokedex object. Contains no Pokemon at start but has an array size of 8 for efficiency reasons.
+ ** Function: pokedex()
+ ** Description: Default constructor for the pokedex object. Contains no pokemonpokemon at start but has an array size of 8 for efficiency reasons.
  ** Parameters: N/A
  ** Pre-Conditions: N/A
- ** Post-Conditions: A Pokedex object will be created containing no Pokemon.
+ ** Post-Conditions: A pokedex object will be created containing no pokemonpokemon.
  *********************************************************************/
-Pokedex::Pokedex() {
+pokedex::pokedex() {
 	num_pokemon = 0;
 	maxSize = 8;
-	dex = new Pokemon_h::Pokemon[maxSize];
+	dex = new pokemon_h::pokemon[maxSize];
 	filename = "";
 }
 
 /*********************************************************************
- ** Function: Pokedex()
- ** Description: Paramaterized constructor for making a Pokedex object meant to hold a certain number of Pokemon.
+ ** Function: pokedex()
+ ** Description: Paramaterized constructor for making a pokedex object meant to hold a certain number of pokemonpokemon.
  ** Parameters: int num_pokemon
- ** Pre-Conditions: The number of Pokemon to allocate space for must be provided as an argument.
- ** Post-Conditions: A Pokedex object of a certain size will be created, containing no Pokemon.
+ ** Pre-Conditions: The number of pokemonpokemon to allocate space for must be provided as an argument.
+ ** Post-Conditions: A pokedex object of a certain size will be created, containing no pokemonpokemon.
  *********************************************************************/
-Pokedex::Pokedex(int num_pokemon, std::string filename) {
+pokedex::pokedex(int num_pokemon, std::string filename) {
 	this -> num_pokemon = 0;
 	maxSize = num_pokemon * 2;
-	dex = new Pokemon_h::Pokemon[maxSize];
+	dex = new pokemon_h::pokemon[maxSize];
 	this -> filename = filename;
 }
 
 /*********************************************************************
- ** Function: ~Pokedex()
- ** Description: Default destructor for the Pokedex class. Deletes the dynamic array of Pokemon created in the constructors.
+ ** Function: ~pokedex()
+ ** Description: Default destructor for the pokedex class. Deletes the dynamic array of pokemonpokemon created in the constructors.
  ** Parameters: N/A
  ** Pre-Conditions: N/A
- ** Post-Conditions: Pokedex object called on will be destructed.
+ ** Post-Conditions: pokedex object called on will be destructed.
  *********************************************************************/
-Pokedex::~Pokedex() {
+pokedex::~pokedex() {
 	delete[] dex;
 }
 
@@ -53,7 +53,7 @@ Pokedex::~Pokedex() {
  ** Pre-Conditions: A string containg an error message must be provided as an argument.
  ** Post-Conditions: The error message will be printed red in the console.
  *********************************************************************/
-void Pokedex::printError(std::string error) {
+void pokedex::printError(std::string error) {
 	std::cout << "\033[31m" << error << "\033[0m" << std::endl;
 }
 
@@ -64,7 +64,7 @@ void Pokedex::printError(std::string error) {
  ** Pre-Conditions: A string containg the messgae must be provided as an argument.
  ** Post-Conditions: The message will be printed to the console and a verified input will be returned.
  *********************************************************************/
-int Pokedex::askForInt(std::string request) {
+int pokedex::askForInt(std::string request) {
 	std::cout << request << std::endl;
 	int num;
 	while (!(std::cin >> num)) {
@@ -83,7 +83,7 @@ int Pokedex::askForInt(std::string request) {
  ** Pre-Conditions: A string containg the messgae must be provided as an argument.
  ** Post-Conditions: The message will be printed to the console and a verified input will be returned.
  *********************************************************************/
-std::string Pokedex::askForString(std::string request) {
+std::string pokedex::askForString(std::string request) {
 	std::cout << request << std::endl;
 	std::string str;
 	std::cin >> str;
@@ -98,7 +98,7 @@ std::string Pokedex::askForString(std::string request) {
  ** Pre-Conditions: The user must select an output option and a filename in the console.
  ** Post-Conditions: The output will be selected and the filename will have been chosen if applicable.
  *********************************************************************/
-std::string Pokedex::askAboutOutput() {
+std::string pokedex::askAboutOutput() {
 	int printORfile = askForInt( "Would you like this to be output to the command line(1) or a file(2)?");
 	
 	std::string filename = "";
@@ -110,12 +110,12 @@ std::string Pokedex::askAboutOutput() {
 
 /*********************************************************************
  ** Function: searchDex()
- ** Description: Loops over every Pokemon in the Pokedex until one with the correct Pokedex number is found.
+ ** Description: Loops over every pokemonpokemon in the pokedex until one with the correct pokedex number is found.
  ** Parameters: N/A
- ** Pre-Conditions: The user must provide a Pokedex to search for in the console.
- ** Post-Conditions: If a Pokemon has that pokedex number, it will be printed to the console or saved to a file.
+ ** Pre-Conditions: The user must provide a pokedex to search for in the console.
+ ** Post-Conditions: If a pokemonpokemon has that pokedex number, it will be printed to the console or saved to a file.
  *********************************************************************/
-void Pokedex::searchDex() {
+void pokedex::searchDex() {
 	int dex_num = askForInt("What Pokédex number would you like to search for?");
 	std::string filename = askAboutOutput();
 	
@@ -130,12 +130,12 @@ void Pokedex::searchDex() {
 
 /*********************************************************************
  ** Function: searchName()
- ** Description: Loops over every Pokemon in the Pokedex until one with the correct name is found.
+ ** Description: Loops over every pokemonpokemon in the Pokedex until one with the correct name is found.
  ** Parameters: N/A
  ** Pre-Conditions: The user must provide a name to search for in the console.
- ** Post-Conditions: If a Pokemon has that name, it will be printed to the console or saved to a file.
+ ** Post-Conditions: If a pokemonpokemon has that name, it will be printed to the console or saved to a file.
  *********************************************************************/
-void Pokedex::searchName() {
+void pokedex::searchName() {
 	std::string name = askForString("What Pokémon name would you like to search for?");
 	std::string filename = askAboutOutput();
 	
@@ -150,12 +150,12 @@ void Pokedex::searchName() {
 
 /*********************************************************************
  ** Function: searchType()
- ** Description: Loops over every Pokemon in the Pokedex and prints all with the correct type.
+ ** Description: Loops over every pokemonpokemon in the Pokedex and prints all with the correct type.
  ** Parameters: N/A
  ** Pre-Conditions: The user must provide a type to search for in the console.
- ** Post-Conditions: If a Pokemon has that type, it will be printed to the console or saved to a file.
+ ** Post-Conditions: If a pokemonpokemon has that type, it will be printed to the console or saved to a file.
  *********************************************************************/
-void Pokedex::searchType() {
+void pokedex::searchType() {
 	std::string type = askForString("What Pokémon type would you like to search for?");
 	std::string filename = askAboutOutput();
 	
@@ -177,14 +177,14 @@ void Pokedex::searchType() {
  ** Pre-Conditions: N/A
  ** Post-Conditions: A larger pokemon array will be created.
  *********************************************************************/
-void Pokedex::resizeDex() {
+void pokedex::resizeDex() {
 	if (num_pokemon + 1 > maxSize) {
 		// Creates a new Pokémon array with the larger size
 		maxSize = maxSize * 2;
-		Pokemon_h::Pokemon* new_dex = new Pokemon_h::Pokemon[maxSize];
+		pokemon_h::pokemon* new_dex = new pokemon_h::pokemon[maxSize];
 		
 		// Copies old pokemon array to new pokemon array
-		memcpy(new_dex, dex, num_pokemon * sizeof(Pokemon_h::Pokemon));
+		memcpy(new_dex, dex, num_pokemon * sizeof(pokemon_h::pokemon));
 		
 		// Sets num_pokemon to the new size, deletes old array, replaces old array with new array
 		delete[] dex;
@@ -199,7 +199,7 @@ void Pokedex::resizeDex() {
  ** Pre-Conditions: The user must provide pokemon details through the console.
  ** Post-Conditions: A new pokemon will be added to the Pokedex object and input file
  *********************************************************************/
-void Pokedex::clAddPokemon() {
+void pokedex::clAddPokemon() {
 	int dex_num = askForInt("Enter the Pokédex Number for this Pokémon.");
 	std::string name = askForString("Enter the name of this Pokémon.");
 	std::string type = askForString("Enter the type for this Pokémon.");
@@ -240,8 +240,8 @@ void Pokedex::clAddPokemon() {
  ** Pre-Conditions: Arguments must be provided to construct the pokemon
  ** Post-Conditions: A new pokemon will be added to the Pokedex object
  *********************************************************************/
-void Pokedex::addPokemon(int dex_num, std::string name, std::string type, std::string* moves) {
-	Pokemon_h::Pokemon pokemon(dex_num, name, type, moves);
+void pokedex::addPokemon(int dex_num, std::string name, std::string type, std::string* moves) {
+	pokemon_h::pokemon pokemon(dex_num, name, type, moves);
 	
 	// Resizes Pokédex when it is not large enough to fit current Pokémon
 	resizeDex();
@@ -258,7 +258,7 @@ void Pokedex::addPokemon(int dex_num, std::string name, std::string type, std::s
  ** Pre-Conditions: User must select options through the console
  ** Post-Conditions: A pokemon with certain attributes will be searched for in the pokedex, or a pokemon will be added to the pokedex, or the program will end.
  *********************************************************************/
-void Pokedex::askWhatToDo() {
+void pokedex::askWhatToDo() {
 	bool quit = false;
 	
 	while (!quit) {

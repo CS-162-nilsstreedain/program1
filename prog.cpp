@@ -1,5 +1,5 @@
 /*********************************************************************
- ** Program Filename:   main.cpp
+ ** Program Filename:   prog.cpp
  ** Author:  Nils Streedain
  ** Date:  10/9/21
  ** Description:  Main driver file for Pokédex program.
@@ -7,7 +7,7 @@
  ** Output:  Command Line/Output File
  *********************************************************************/
 #include <fstream>
-#include "Pokedex.h"
+#include "pokedex.h"
 
 /*********************************************************************
  ** Function: main()
@@ -27,7 +27,7 @@ int main(int argc, const char * argv[]) {
 			std::string currentName, currentType, currentMoves[4];
 			
 			file >> numPokemon;
-			Pokedex pokedex(numPokemon, argv[1]);
+			pokedex pokedex(numPokemon, argv[1]);
 			
 			// While not at end of file, parse data for each Pokémon being added
 			while (!file.eof()) {

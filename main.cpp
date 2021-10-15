@@ -1,80 +1,53 @@
-//
-//  main.cpp
-//  Program 1
-//
-//  Created by Nils Streedain on 10/9/21.
-//
-
-#include <iostream>
+/*********************************************************************
+ ** Program Filename:   main.cpp
+ ** Author:  Nils Streedain
+ ** Date:  10/9/21
+ ** Description:  Main driver file for Pokédex program.
+ ** Input:  filename
+ ** Output:  Command Line/Output File
+ *********************************************************************/
+#include <fstream>
 #include "Pokedex.h"
-#include "Pokemon.h"
 
+/*********************************************************************
+ ** Function: main()
+ ** Description: Reads a file to build a Pokédex object, then asks the user what to do with said object.
+ ** Parameters: int argc, const char * argv[]
+ ** Pre-Conditions: A filename must be provided as an argument.
+ ** Post-Conditions: The file will be parsed into an object and information may be output to the command line or another file.
+ *********************************************************************/
 int main(int argc, const char * argv[]) {
-	std::string moves[4] = {"Growl", "Tackle", "Leech Seed", "Vine Whip"};
-	Pokedex pokedex;
-	pokedex.addPokemon(1, "Bulbasaur", "Grass", moves);
-	
-	bool quit = false;
-	
-	while (!quit) {
-		int option;
-		std::cout << "Options:\n"
-						"1: Search by Pokédex Number\n"
-						"2: Search by name\n"
-						"3: Search by type\n"
-						"4: Add new Pokémon\n"
-						"5: Quit" << std::endl;
-		std::cin >> option;
+	// Make sure user has provided a cl arg and open fstream with said arg
+	if (argc == 2) {
+		std::ifstream file(argv[1]);
 		
-		switch (option) {
-			case 1: {
-				int dex_num;
-				std::cout << "What Pokédex number would you like to search for?" << std::endl;
-				std::cin >> dex_num;
-				pokedex.searchDex(dex_num) -> print();
-				break;
+		// Check if file is open, then parse data into Pokédex
+		if (file.is_open()) {
+			int numPokemon, currentDex;
+			std::string currentName, currentType, currentMoves[4];
+			
+			file >> numPokemon;
+			Pokedex pokedex(numPokemon, argv[1]);
+			
+			// While not at end of file, parse data for each Pokémon being added
+			while (!file.eof()) {
+				file >> currentDex;
+				file >> currentName;
+				file >> currentType;
+				for (int i = 0; i < 4; i++)
+					file >> currentMoves[i];
+				
+				pokedex.addPokemon(currentDex, currentName, currentType, currentMoves);
 			}
-			case 2: {
-				std::string name;
-				std::cout << "What Pokémon name would you like to search for?" << std::endl;
-				std::cin >> name;
-				pokedex.searchName(name) -> print();
-				break;
-			}
-			case 3: {
-				std::string type;
-				std::cout << "What Pokémon type would you like to search for?" << std::endl;
-				std::cin >> type;
-				pokedex.searchType(type) -> print();
-				break;
-			}
-			case 4: {
-				int dex_num;
-				std::string name, type;
-//				std::string* moves[4];
-				
-				std::cout << "What is the Pokédex Number for this Pokémon?" << std::endl;
-				std::cin >> dex_num;
-				
-				std::cout << "What is the name of this Pokémon?" << std::endl;
-				std::cin >> name;
-				
-				std::cout << "What is the type for this Pokémon?" << std::endl;
-				std::cin >> type;
-				
-//				std::cout << "What is a move for this Pokémon?" << std::endl;
-//				std::cin >> moves[4];
-				
-				
-				break;
-			}
-			case 5: {
-				quit = true;
-				break;
-			}
-			default:
-				break;
+			
+			// When finished parsing, close file and ask user what to do.
+			file.close();
+			pokedex.askWhatToDo();
+		} else {
+			std::cout << "\033[31m" << "Error: File not opened" << "\033[0m" << std::endl;
 		}
+	} else {
+		std::cout << "\033[31m" << "Error: Invalid Command Line Arguments, please provide the filename." << "\033[0m" << std::endl;
 	}
 	
 	return 0;

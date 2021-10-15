@@ -1,35 +1,41 @@
-//
-//  Pokedex.h
-//  Program 1
-//
-//  Created by Nils Streedain on 10/9/21.
-//
+/*********************************************************************
+ ** Program Filename:   Pokedex.h
+ ** Author:  Nils Streedain
+ ** Date:  10/9/21
+ ** Description:  Header file for Pokédex class
+ *********************************************************************/
 
 #ifndef Pokedex_h
 #define Pokedex_h
 
 #include <iostream>
+#include <fstream>
 #include "Pokemon.h"
 
 class Pokedex {
-	std::string trainer;
 	int num_pokemon;
+	int maxSize;
 	Pokemon_h::Pokemon* dex;
+	std::string filename;
 	
-	void resizeDex(int);
+	void printError(std::string);
+	int askForInt(std::string);
+	std::string askForString(std::string);
+	std::string askAboutOutput();
+	
+	void searchDex();
+	void searchName();
+	void searchType();
+	
+	void resizeDex();
+	void clAddPokemon();
 public:
 	Pokedex();
-	Pokedex(std::string, int, Pokemon_h::Pokemon*);
+	Pokedex(int, std::string);
 	~Pokedex();
 	
 	void addPokemon(int, std::string, std::string, std::string*);
-	
-	Pokemon_h::Pokemon* searchDex(int);
-	Pokemon_h::Pokemon* searchName(std::string);
-	Pokemon_h::Pokemon* searchType(std::string);
-	
-	Pokemon_h::Pokemon* getByDexNum(int);
-	int getNumPokemon();
+	void askWhatToDo();
 };
 
 #endif /* Pokedex_h */

@@ -1,9 +1,9 @@
-//
-//  Pokemon.h
-//  Program 1
-//
-//  Created by Nils Streedain on 10/9/21.
-//
+/*********************************************************************
+ ** Program Filename:   Pokemon.h
+ ** Author:  Nils Streedain
+ ** Date:  10/9/21
+ ** Description:  Header file for Pokémon class
+ *********************************************************************/
 
 #ifndef Pokemon_h
 #define Pokemon_h
@@ -14,13 +14,12 @@ class Pokemon {
 	int dex_num;
 	std::string name;
 	std::string type;
-	std::string* moves;
+	std::string moves[4];
 public:
 	Pokemon();
 	Pokemon(int, std::string, std::string, std::string*);
-//	~Pokemon();
 	
-	void print();
+	void output(std::string);
 	
 	int getDexNum();
 	std::string getName();

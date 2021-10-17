@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <limits>
 #include "pokemon.h"
 
 class pokedex {
@@ -18,14 +19,14 @@ class pokedex {
 	pokemon_h::pokemon* dex;
 	std::string filename;
 	
-	void printError(std::string);
-	int askForInt(std::string);
-	std::string askForString(std::string);
-	std::string askAboutOutput();
+	void printError(std::string) const;
+	int askForInt(std::string) const;
+	std::string askForString(std::string) const;
+	std::string askAboutOutput() const;
 	
-	void searchDex();
-	void searchName();
-	void searchType();
+	void searchDex() const;
+	void searchName() const;
+	void searchType() const;
 	
 	void resizeDex();
 	void clAddPokemon();

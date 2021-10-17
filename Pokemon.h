@@ -19,12 +19,12 @@ public:
 	pokemon();
 	pokemon(int, std::string, std::string, std::string*);
 	
-	void output(std::string);
-	std::string to_string();
+	void output(std::string) const;
+	std::string to_string() const;
 	
-	int getDexNum();
-	std::string getName();
-	std::string getType();
+	int getDexNum() const;
+	std::string getName() const;
+	std::string getType() const;
 };
 
 #endif /* Pokemon_h */

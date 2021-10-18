@@ -34,6 +34,8 @@ public:
 	pokedex();
 	pokedex(int, std::string);
 	~pokedex();
+	pokedex(const pokedex&);
+	pokedex& operator= (const pokedex&);
 	
 	void addPokemon(int, std::string, std::string, std::string*);
 	void askWhatToDo();

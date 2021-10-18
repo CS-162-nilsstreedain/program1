@@ -47,6 +47,38 @@ pokedex::~pokedex() {
 }
 
 /*********************************************************************
+ ** Function: pokedex()
+ ** Description: Copy constructor for the pokedex class. Perfoms a deep copy on an old pokedex into a new pokedex.
+ ** Parameters: const pokedex& old_pokedex
+ ** Pre-Conditions: N/A
+ ** Post-Conditions: pokedex object called on will be copied into new pokedex.
+ *********************************************************************/
+pokedex::pokedex(const pokedex& old_pokedex) {
+	num_pokemon = old_pokedex.num_pokemon;
+	maxSize = old_pokedex.maxSize;
+	for (int i = 0; i < num_pokemon; i++)
+		dex[i] = old_pokedex.dex[i];
+	filename = old_pokedex.filename;
+}
+
+/*********************************************************************
+ ** Function: pokedex()
+ ** Description: Assignment Operator Overload for the pokedex class. Perfoms a deep copy on an old pokedex into a new pokedex.
+ ** Parameters: const pokedex& old_pokedex
+ ** Pre-Conditions: N/A
+ ** Post-Conditions: pokedex object called on will be copied into new pokedex and will be returned.
+ *********************************************************************/
+pokedex& pokedex::operator= (const pokedex& old_pokedex) {
+	num_pokemon = old_pokedex.num_pokemon;
+	maxSize = old_pokedex.maxSize;
+	for (int i = 0; i < num_pokemon; i++)
+		dex[i] = old_pokedex.dex[i];
+	filename = old_pokedex.filename;
+	
+	return *this;
+}
+
+/*********************************************************************
  ** Function: printError()
  ** Description: Prints a red color formatted string to the console for easier reading.
  ** Parameters: std::string error
